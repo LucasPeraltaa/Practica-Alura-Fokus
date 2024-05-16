@@ -4,20 +4,29 @@ const btnCorto = document.querySelector('.app__card-button--corto')
 const btnLargo = document.querySelector('.app__card-button--largo')
 const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
+const botones = document.querySelectorAll('.app__card-button')
 
 btnEnfoque.addEventListener('click', ()=>{
     cambiarContexto('enfoque')
+    btnEnfoque.classList.add('active')
 })
 
 btnCorto.addEventListener('click', ()=>{
     cambiarContexto('descanso-corto')
+    btnCorto.classList.add('active')
 })
 
 btnLargo.addEventListener('click', ()=>{
     cambiarContexto('descanso-largo')
+    btnLargo.classList.add('active')
 })
 
 function cambiarContexto(contexto){
+
+    botones.forEach(function(contexto){
+        contexto.classList.remove('active')
+    })
+
     html.setAttribute('data-contexto', contexto)
     banner.setAttribute('src',`./imagenes/${contexto}.png`)
     
@@ -35,9 +44,6 @@ function cambiarContexto(contexto){
         case "descanso-largo":
             titulo.innerHTML = `A volver al mundo real
             <strong class="app__title-strong">haz una pausa larga!!</strong>`
-            break;
-
-        default:
             break;
     }
 }
