@@ -5,6 +5,8 @@ const btnLargo = document.querySelector('.app__card-button--largo')
 const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
 const botones = document.querySelectorAll('.app__card-button')
+const enfoqueMusic = document.querySelector('#alternar-musica')
+const musica = new Audio('./sonidos/luna-rise-part-one.mp3')
 
 btnEnfoque.addEventListener('click', ()=>{
     cambiarContexto('enfoque')
@@ -47,3 +49,13 @@ function cambiarContexto(contexto){
             break;
     }
 }
+
+musica.loop = true
+
+enfoqueMusic.addEventListener('change', ()=>{
+    if(musica.paused){
+        musica.play()
+    }else{
+        musica.pause()
+    }
+})
